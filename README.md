@@ -1,0 +1,3 @@
+# secc_nrpe_checks #
+
+This is the secc_nrpe_checks module. It provides...
