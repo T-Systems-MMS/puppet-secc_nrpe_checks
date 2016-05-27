@@ -1,6 +1,6 @@
 {
   "author": "crgr",
-  "dependencies": [ {"name":"puppetlabs/stdlib"} ],
+  "dependencies": [ {"name":"puppetlabs/stdlib"}],
   "license": "",
   "name": "secc_nrpe_checks",
   "operatingsystem_support": [ "RHEL6", "RHEL7", "CentOS6", "CentOS7" ],

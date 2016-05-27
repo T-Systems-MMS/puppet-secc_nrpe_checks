@@ -1,18 +1,21 @@
 class secc_nrpe_checks::config(
-  $epelreponame,
+#  $epelreponame,
   
   $manage_home_nrpe_bin_recurse,
   $manage_home_nrpe_bin_purge,
   $manage_home_nrpe_bin_force,
   
   $commands_in_general_cfg,
+  $manage_etc_nrped_recurse,
+  $manage_etc_nrped_purge,
 ) {
-  
-  package { 'nrpe':
-    ensure => installed,
-    alias  => 'nrpe',
-    install_options => ['--enablerepo', "${epelreponame}"],
-  }
+
+## needed for Testkitchen Tests ##
+#  package { 'nrpe':
+#    ensure => installed,
+#    alias  => 'nrpe',
+#    install_options => ['--enablerepo', "${epelreponame}"],
+#  }
   
   file { '/home/nrpe/bin/':
     ensure  => directory,
@@ -23,13 +26,12 @@ class secc_nrpe_checks::config(
     purge   => $manage_home_nrpe_bin_purge,
     force   => $manage_home_nrpe_bin_force,
     source  => 'puppet:///modules/secc_nrpe_checks/home/nrpe/bin',
-    require => File['/home/nrpe/'],
   }
   
   file { '/etc/nrpe.d/':
     ensure  => directory,
-    recurse => true,
-    purge   => true,
+    recurse => $manage_etc_nrped_recurse,
+    purge   => $manage_etc_nrped_purge,
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
