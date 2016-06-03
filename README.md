@@ -33,7 +33,7 @@ Das Modul kann Checks automatisiert ausrollen und managen. Commands können in d
 
 ### Beginning with [nrpe]
 
-* Für die Grundfunktionalität von NRPE muss die Main Class inkludiert werden.
+* Für die Grundfunktionalität von NRPE Checks muss die Main Class inkludiert werden.
 
 ## Usage
 
