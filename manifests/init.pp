@@ -1,6 +1,5 @@
 # secc nrpe checks Rollout
 class secc_nrpe_checks(
-#  $epelreponame                  = 'epel',
 
   $manage_home_nrpe_bin_recurse   = true,
   $manage_home_nrpe_bin_purge     = true,
@@ -11,13 +10,10 @@ class secc_nrpe_checks(
   $manage_etc_nrped_purge         = true,
 
 ) {
-  
+ 
   require secc_nrpe
-
-#  include secc_nrpe_checks::user
   
   class { 'secc_nrpe_checks::config':
-#    epelreponame                  => $epelreponame,
     
     manage_home_nrpe_bin_recurse  => $manage_home_nrpe_bin_recurse,
     manage_home_nrpe_bin_purge    => $manage_home_nrpe_bin_purge,
