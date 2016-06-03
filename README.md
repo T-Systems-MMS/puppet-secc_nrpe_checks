@@ -38,7 +38,7 @@ Das Modul kann Checks automatisiert ausrollen und managen. Commands können in d
 ## Usage
 
 * Das Modul kann nicht über ein Puppetfile eingebunden werden. 
-* Für die Verwendung des Moduls secc_nrpe_checks ist die Nutzung vom secc_nrpe **zwingend** erforderlich!
+* Für die Verwendung des Moduls secc_nrpe_checks ist die Nutzung von secc_nrpe **zwingend** erforderlich!
 * Um das Modul zu nutzen, muss dieses ins jeweilige Projekt-/Servicerepo kopiert werden. 
 * Die Abhängigkeit zum Modul SecC NRPE ist mit require secc_nrpe in der init.pp verankert.
 
