@@ -5,12 +5,14 @@ class secc_nrpe_checks(
   $manage_home_nrpe_bin_purge     = true,
   $manage_home_nrpe_bin_force     = true,
   
-  $commands_in_general_cfg        = [ undef ],
+  $ext_commands_in_general_cfg    = [undef],
   $manage_etc_nrped_recurse       = true,
   $manage_etc_nrped_purge         = true,
 
 ) {
- 
+  
+  $commands_in_general_cfg = hiera(commands_in_general_cfg, $ext_commands_in_general_cfg)
+  
   require secc_nrpe
   
   class { 'secc_nrpe_checks::config':
