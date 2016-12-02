@@ -19,7 +19,7 @@ Diese Modul ist das Schwestermodul zu SecC NRPE.
 
 ## Module Description
 
-Das Modul kann Checks automatisiert ausrollen und managen. Commands können in die general.cfg eingetragen werden. Allerdings ist dieses Modul nicht ohne SecC NRPE **nicht** lauffähig.
+Das Modul kann Checks automatisiert ausrollen und managen. Commands können in die general.cfg eingetragen werden. Allerdings ist dieses Modul **nicht** ohne SecC NRPE lauffähig.
 
 ## Setup
 
