@@ -7,6 +7,8 @@ class secc_nrpe_checks::config(
   $commands_in_general_cfg,
   $manage_etc_nrped_recurse,
   $manage_etc_nrped_purge,
+
+  $nrpe_module_repository,
 ) {
   
   file { '/home/nrpe/bin/':
@@ -37,6 +39,12 @@ class secc_nrpe_checks::config(
     mode    => '0644',
     require => File['/etc/nrpe.d/'],
   }
-  
-  
+
+  if $nrpe_module_repository {
+    vcsrepo { '/home/nrpe/bin/':
+      ensure   => latest,
+      provider => git,
+      source   => $nrpe_module_repository,
+    }
+  }
 }
