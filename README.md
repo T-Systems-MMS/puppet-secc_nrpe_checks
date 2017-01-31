@@ -1,7 +1,5 @@
 # AMCS SecC - NRPE Checks Module
 
-#### Table of Contents
-
 1. [Overview](#overview)
 2. [Module Description - What the module does and why it is useful](#module-description)
 3. [Setup - The basics of getting started with [nrpe]](#setup)
@@ -19,7 +17,7 @@ Diese Modul ist das Schwestermodul zu SecC NRPE.
 
 ## Module Description
 
-Das Modul kann Checks automatisiert ausrollen und managen. Commands können in die general.cfg eingetragen werden. Allerdings ist dieses Modul **nicht** ohne SecC NRPE lauffähig.
+Das Modul kann Checks automatisiert ausrollen und managen. Commands können in die general.cfg eingetragen werden. Allerdings ist dieses Modul ohne SecC NRPE **nicht** lauffähig.
 
 ## Setup
 
@@ -27,7 +25,7 @@ Das Modul kann Checks automatisiert ausrollen und managen. Commands können in d
 
 1. Files
     * '/home/nrpe/bin/checks_*'
-    
+
 1. Templates
 	* '/etc/nrpe.d/general.cfg'
 
@@ -37,10 +35,27 @@ Das Modul kann Checks automatisiert ausrollen und managen. Commands können in d
 
 ## Usage
 
-* Das Modul kann nicht über ein Puppetfile eingebunden werden. 
 * Für die Verwendung des Moduls secc_nrpe_checks ist die Nutzung von secc_nrpe **zwingend** erforderlich!
-* Um das Modul zu nutzen, muss dieses ins jeweilige Projekt-/Servicerepo kopiert werden. 
 * Die Abhängigkeit zum Modul SecC NRPE ist mit require secc_nrpe in der init.pp verankert.
+
+Es gibt zwei Verwendungsarten dieses Moduls:
+
+* Kopieren des Moduls in das jeweilige Projekt-/Servicerepo.
+  * Dies ist notwendig, wenn die zu nutzenden NRPE-Checks nicht in einem separaten GIT-Repository liegen.
+  * Das Modul kann dann nicht über ein Puppetfile eingebunden werden.
+* Nutzen des Moduls im Puppetfile
+  * Hier können NRPE-Checks aus einem eigenen GIT-Repository eingebunden werden. Dazu müssen folgende Dinge konfiguriert werden:
+    * die Variable `$nrpe_module_repository` muss auf die URL des entsprechenden Repositories gesetzt werden.
+    * Die Variablen `manage_home_nrpe_bin_purge` und `manage_home_nrpe_bin_force` müssen auf `false` gesetzt werden.
+
+Beispiel:
+
+```
+secc_nrpe_checks::nrpe_module_repository: https://$USERNAME:$PASSWORD@git.t-systems-mms.eu/scm/amcs700103/amcs_7001_03_nrpe_checks.git
+secc_nrpe_checks::manage_home_nrpe_bin_purge: false
+secc_nrpe_checks::manage_home_nrpe_bin_force: false
+```
+
 
 ## Reference
 
