@@ -11,7 +11,7 @@ class secc_nrpe_checks(
 
   $nrpe_module_repository       = undef,
 ) {
-  if ! empty($commands_in_general_cfg) {
+  if empty($commands_in_general_cfg) {
     $_commands_in_general_cfg = hiera_array("${module_name}::commands_in_general_cfg", {})
   } else {
     $_commands_in_general_cfg = $commands_in_general_cfg
