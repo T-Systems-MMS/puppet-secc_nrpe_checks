@@ -12,10 +12,13 @@ class secc_nrpe_checks(
   $nrpe_module_repository       = undef,
 ) {
   
-  if empty($commands_in_general_cfg) {
-    $_commands_in_general_cfg = hiera_array("${module_name}::commands_in_general_cfg", {})
+  $_commands_in_general_cfg = hiera_array("${module_name}::commands_in_general_cfg", $commands_in_general_cfg)
+
+# Validate values p3/p4 compatible
+  if versioncmp($clientversion, '4.0.0') < 0 {
+    validate_array($_commands_in_general_cfg)
   } else {
-    $_commands_in_general_cfg = $commands_in_general_cfg
+    validate_legacy(Array, 'validate_array', $_commands_in_general_cfg)
   }
 
   require secc_nrpe
