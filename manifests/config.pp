@@ -57,5 +57,6 @@ class secc_nrpe_checks::config(
     group   => 'root',
     mode    => '0644',
     require => File['/etc/nrpe.d/'],
+    notify => Service['nrpe'],
   }
 }
