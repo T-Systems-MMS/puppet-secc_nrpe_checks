@@ -56,12 +56,36 @@ secc_nrpe_checks::manage_home_nrpe_bin_purge: false
 secc_nrpe_checks::manage_home_nrpe_bin_force: false
 ```
 
+### Schnittstelle Ausrollen von Dateien unter /etc/nrpe.d
 
+Über das define `secc_nrpe_checks::command_file` ist es möglich von extern (bspw. aus eigenen Modulen oder Profilen) NRPE Command Definitionen unter /etc/nrpe.d abzulegen
+
+Ein Beispielaufruf könnte so aussehen:
+
+```
+secc_nrpe_checks::command_file { 'this_is_a_test':
+  commands => {
+    'NRPE_first_command' => {
+      command => '/bin/true',
+    }
+  }
+}
+```
+
+Das Ergebnis wäre die Datei `/etc/nrpe.d/this_is_a_test.cfg` mit dem Inhalt:
+
+```
+### MANAGED BY PUPPET ['secc_nrpe_checks']  ###
+
+command[NRPE_first_command]=/bin/true
+```
 ## Reference
 
 1. Classes
     * secc_nrpe_checks
     * secc_nrpe_checks::config
+1. Defines
+    * secc_nrpe_checks::command_file
 
 ## Limitations
 
