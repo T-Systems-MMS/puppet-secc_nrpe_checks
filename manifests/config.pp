@@ -1,15 +1,12 @@
-class secc_nrpe_checks::config(
+class secc_nrpe_checks::config {
 
-  $manage_home_nrpe_bin_recurse,
-  $manage_home_nrpe_bin_purge,
-  $manage_home_nrpe_bin_force,
-
-  $commands_in_general_cfg,
-  $manage_etc_nrped_recurse,
-  $manage_etc_nrped_purge,
-
-  $nrpe_module_repository,
-) {
+  $manage_home_nrpe_bin_recurse = $::secc_nrpe_checks::manage_home_nrpe_bin_recurse
+  $manage_home_nrpe_bin_purge = $::secc_nrpe_checks::manage_home_nrpe_bin_purge
+  $manage_home_nrpe_bin_force = $::secc_nrpe_checks::manage_home_nrpe_bin_force
+  $commands_in_general_cfg = $::secc_nrpe_checks::commands_in_general_cfg
+  $manage_etc_nrped_recurse = $::secc_nrpe_checks::manage_etc_nrped_recurse
+  $manage_etc_nrped_purge = $::secc_nrpe_checks::manage_etc_nrped_purge
+  $nrpe_module_repository = $::secc_nrpe_checks::nrpe_module_repository
 
   if $nrpe_module_repository {
     vcsrepo { '/home/nrpe/bin/':
