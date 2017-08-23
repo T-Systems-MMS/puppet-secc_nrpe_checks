@@ -5,7 +5,7 @@ define secc_nrpe_checks::command_file (
   if versioncmp($clientversion, '4.0.0') < 0 {
     validate_hash($commands)
   } else {
-    validate_legacy(hash, 'validate_hash', $commands)
+    validate_legacy(Hash, 'validate_hash', $commands)
   }
 
   include secc_nrpe_checks
