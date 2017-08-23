@@ -20,11 +20,11 @@ class secc_nrpe_checks::config(
     }
 
     file { '/home/nrpe/bin/':
-      ensure       => directory,
-      owner        => 'nrpe',
-      group        => 'nrpe',
-      mode         => '0750',
-      recurse      => true,
+      ensure  => directory,
+      owner   => 'nrpe',
+      group   => 'nrpe',
+      mode    => '0750',
+      recurse => true,
     }
   }
 
@@ -57,6 +57,6 @@ class secc_nrpe_checks::config(
     group   => 'root',
     mode    => '0644',
     require => File['/etc/nrpe.d/'],
-    notify => Service['nrpe'],
+    notify  => Service['nrpe'],
   }
 }
