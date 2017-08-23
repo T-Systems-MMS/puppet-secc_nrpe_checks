@@ -16,6 +16,7 @@ define secc_nrpe_checks::command_file (
     group   => 'nrpe',
     mode    => '0640',
     owner   => 'nrpe',
+    notify  => Service['nrpe'],
   }
 
 }
