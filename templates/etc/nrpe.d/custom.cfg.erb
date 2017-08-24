@@ -1,0 +1,5 @@
+### MANAGED BY PUPPET ['<%= @module_name %>']  ###
+
+<% @commands.each do |key, value| -%>
+command[<%= key %>]=<%= value['command'] %>
+<% end -%>
