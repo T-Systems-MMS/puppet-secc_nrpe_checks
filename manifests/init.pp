@@ -21,7 +21,7 @@ class secc_nrpe_checks(
     validate_legacy(Array, 'validate_array', $_commands_in_general_cfg)
   }
 
-  require secc_nrpe
+  include secc_nrpe
 
   contain secc_nrpe_checks::config
 }
