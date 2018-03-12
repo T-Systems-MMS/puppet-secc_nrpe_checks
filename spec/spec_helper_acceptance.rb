@@ -24,7 +24,9 @@ RSpec.configure do |c|
       logger.info('modulepath: ' + modulepath)
 
       install_dev_puppet_module_on(host, :source => module_root, :module_name => 'secc_nrpe_checks',
-          :target_module_path => modulepath)
+                                   :target_module_path => modulepath)
+      install_dev_puppet_module_on(host, :source => module_root + '/secc_nrpe/', :module_name => 'secc_nrpe',
+                                   :target_module_path => modulepath)
       # Install dependencies
       on(host, puppet('module', 'install', 'puppetlabs-stdlib'))
       # Add more setup code as needed
