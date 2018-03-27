@@ -4,7 +4,7 @@ class secc_nrpe_checks::install {
       ensure          => installed,
       install_options => [
         {
-          '--enablerepo' => $::secc_nrpe::epelreponame
+          '--enablerepo' => 'epel'
         }
       ],
     }
