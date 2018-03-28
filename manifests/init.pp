@@ -12,7 +12,8 @@ class secc_nrpe_checks(
   $nrpe_module_repository       = undef,
   $custom_checks_module         = undef,
 
-  $nagios_basic_nrpe_plugins    = [
+  $install_basic_nagios_plugins = true,
+  $basic_nagios_plugins         = [
     'nagios-plugins-dig',
     'nagios-plugins-disk',
     'nagios-plugins-dns',

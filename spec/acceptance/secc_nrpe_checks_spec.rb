@@ -1,6 +1,18 @@
 require 'spec_helper_acceptance'
 
 describe 'Class secc_nrpe_checks' do
+
+    nagios_basic_nrpe_plugins = [
+    	'nagios-plugins-dig',
+    	'nagios-plugins-disk',
+    	'nagios-plugins-dns',
+    	'nagios-plugins-http',
+    	'nagios-plugins-procs',
+    	'nagios-plugins-smtp',
+    	'nagios-plugins-ssh',
+    	'nagios-plugins-tcp',
+    ]
+
     let(:manifest) {
     <<-EOS
       class { 'secc_nrpe_checks': }
@@ -50,5 +62,9 @@ describe 'Class secc_nrpe_checks' do
       it { should be_mode 644 }
       it { should be_owned_by 'root' }
       it { should be_grouped_into 'root'}
+    end
+
+    describe package(nagios_basic_nrpe_plugins) do
+      it { should be_installed }
     end
 end

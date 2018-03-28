@@ -1,16 +1,5 @@
 require 'spec_helper'
 
-  nagios_basic_nrpe_plugins = [
-		'nagios-plugins-dig',
-		'nagios-plugins-disk',
-		'nagios-plugins-dns',
-		'nagios-plugins-http',
-		'nagios-plugins-procs',
-		'nagios-plugins-smtp',
-		'nagios-plugins-ssh',
-		'nagios-plugins-tcp',
-	]
-
 	describe user('nrpe') do
 		it { should exist }
   		it { should have_home_directory '/home/nrpe' }
@@ -47,7 +36,4 @@ require 'spec_helper'
 		it { should be_owned_by 'root' }
 		it { should be_grouped_into 'root'}
 	end
-
-	describe package(nagios_basic_nrpe_plugins) do
-	  it { should be_installed }
-	end
+end

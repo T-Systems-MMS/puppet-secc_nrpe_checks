@@ -1,10 +1,10 @@
 class secc_nrpe_checks::install {
-  if $::secc_nrpe_checks::nagios_basic_nrpe_plugins {
-    package { $::secc_nrpe_checks::nagios_basic_nrpe_plugins:
+  if $secc_nrpe_checks::install_basic_nagios_plugins {
+    package { $::secc_nrpe_checks::basic_nagios_plugins:
       ensure          => installed,
       install_options => [
         {
-          '--enablerepo' => 'epel'
+          '--enablerepo' => '*epel*'
         }
       ],
     }
