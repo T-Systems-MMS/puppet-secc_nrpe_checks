@@ -47,7 +47,7 @@ describe 'Class secc_nrpe_checks' do
       it { should be_grouped_into 'nrpe'}
     end
 
-    describe file('/home/nrpe/bin/') do
+    describe file('/opt/monitoring/bin/') do
       it { should exist }
       it { should be_directory }
       it { should be_mode 750 }
