@@ -64,7 +64,10 @@ describe 'Class secc_nrpe_checks' do
       it { should be_grouped_into 'root'}
     end
 
-    describe package(nagios_basic_nrpe_plugins) do
-      it { should be_installed }
+    nagios_basic_nrpe_plugins.each do |plugin|
+      describe package(plugin) do
+        it { should be_installed }
+      end
     end
+
 end
