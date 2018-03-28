@@ -70,7 +70,7 @@ describe 'Class secc_nrpe_checks' do
       it { should be_grouped_into 'root'}
     end
 
-    nagios_basic_nrpe_plugins.each do |plugin|
+    basic_nagios_plugins.each do |plugin|
       describe package(plugin) do
         it { should_not be_installed }
       end

@@ -2,7 +2,7 @@ require 'spec_helper_acceptance'
 
 describe 'Class secc_nrpe_checks' do
 
-    nagios_basic_nrpe_plugins = [
+    basic_nagios_plugins = [
     	'nagios-plugins-dig',
     	'nagios-plugins-disk',
     	'nagios-plugins-dns',
@@ -64,7 +64,7 @@ describe 'Class secc_nrpe_checks' do
       it { should be_grouped_into 'root'}
     end
 
-    nagios_basic_nrpe_plugins.each do |plugin|
+    basic_nagios_plugins.each do |plugin|
       describe package(plugin) do
         it { should be_installed }
       end
