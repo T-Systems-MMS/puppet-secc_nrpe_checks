@@ -1,6 +1,6 @@
 require 'spec_helper_acceptance'
 
-describe 'Class secc_nrpe_checks' do
+describe 'Class secc_nrpe_checks custom settings' do
 
     basic_nagios_plugins = [
     	'nagios-plugins-dig',
@@ -17,7 +17,7 @@ describe 'Class secc_nrpe_checks' do
     <<-EOS
       class { 'secc_nrpe':
         nrpe_homedir => '/opt/monitoring',
-      } ->
+      }
       class { 'secc_nrpe_checks':
         install_basic_nagios_plugins => false,
         nrpe_homedir                 => '/opt/monitoring',
