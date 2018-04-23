@@ -7,16 +7,17 @@ class secc_nrpe_checks::config {
   $manage_etc_nrped_recurse = $::secc_nrpe_checks::manage_etc_nrped_recurse
   $manage_etc_nrped_purge = $::secc_nrpe_checks::manage_etc_nrped_purge
   $nrpe_module_repository = $::secc_nrpe_checks::nrpe_module_repository
+  $custom_checks_module = $::secc_nrpe_checks::custom_checks_module
 
   if $nrpe_module_repository {
-    vcsrepo { '/home/nrpe/bin/':
+    vcsrepo { "${::secc_nrpe_checks::nrpe_homedir}/bin/":
       ensure   => latest,
       provider => git,
       source   => $nrpe_module_repository,
-      notify   => File['/home/nrpe/bin'],
+      notify   => File["${::secc_nrpe_checks::nrpe_homedir}/bin"],
     }
 
-    file { '/home/nrpe/bin/':
+    file { "${::secc_nrpe_checks::nrpe_homedir}/bin/":
       ensure  => directory,
       owner   => 'nrpe',
       group   => 'nrpe',
@@ -24,9 +25,8 @@ class secc_nrpe_checks::config {
       recurse => true,
     }
   }
-
-  else {
-    file { '/home/nrpe/bin/':
+  elsif $custom_checks_module {
+    file { "${::secc_nrpe_checks::nrpe_homedir}/bin/":
       ensure  => directory,
       owner   => 'nrpe',
       group   => 'nrpe',
@@ -34,7 +34,17 @@ class secc_nrpe_checks::config {
       recurse => $manage_home_nrpe_bin_recurse,
       purge   => $manage_home_nrpe_bin_purge,
       force   => $manage_home_nrpe_bin_force,
-      source  => 'puppet:///modules/secc_nrpe_checks/home/nrpe/bin',
+      source  => "puppet:///modules/${custom_checks_module}"
+    }
+  } else {
+    file { "${::secc_nrpe_checks::nrpe_homedir}/bin/":
+      ensure  => directory,
+      owner   => 'nrpe',
+      group   => 'nrpe',
+      mode    => '0750',
+      recurse => $manage_home_nrpe_bin_recurse,
+      purge   => $manage_home_nrpe_bin_purge,
+      force   => $manage_home_nrpe_bin_force,
     }
   }
 

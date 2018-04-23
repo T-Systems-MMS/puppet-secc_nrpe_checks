@@ -1,11 +1,11 @@
 require 'spec_helper'
-	
+
 	describe user('nrpe') do
 		it { should exist }
   		it { should have_home_directory '/home/nrpe' }
   		it { should have_login_shell '/sbin/nologin' }
 	end
-	
+
 	describe file('/home/nrpe/') do
 		it { should exist }
 		it { should be_directory }
@@ -21,7 +21,7 @@ require 'spec_helper'
 		it { should be_owned_by 'nrpe' }
 		it { should be_grouped_into 'nrpe'}
 	end
-	
+
 	describe file('/etc/nrpe.d/') do
 		it { should exist }
 		it { should be_directory }
@@ -29,12 +29,11 @@ require 'spec_helper'
 		it { should be_owned_by 'root' }
 		it { should be_grouped_into 'root'}
 	end
-	
+
 	describe file('/etc/nrpe.d/general.cfg') do
 		it { should exist }
 		it { should be_mode 644 }
 		it { should be_owned_by 'root' }
 		it { should be_grouped_into 'root'}
 	end
-		
-		
+end

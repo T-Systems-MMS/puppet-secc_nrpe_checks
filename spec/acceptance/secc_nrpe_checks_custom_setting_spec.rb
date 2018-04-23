@@ -1,6 +1,6 @@
 require 'spec_helper_acceptance'
 
-describe 'Class secc_nrpe_checks' do
+describe 'Class secc_nrpe_checks custom settings' do
 
     basic_nagios_plugins = [
     	'nagios-plugins-dig',
@@ -15,7 +15,13 @@ describe 'Class secc_nrpe_checks' do
 
     let(:manifest) {
     <<-EOS
-      class { 'secc_nrpe_checks': }
+      class { 'secc_nrpe':
+        nrpe_homedir => '/opt/monitoring',
+      }
+      class { 'secc_nrpe_checks':
+        install_basic_nagios_plugins => false,
+        nrpe_homedir                 => '/opt/monitoring',
+      }
     EOS
     }
 
@@ -29,11 +35,11 @@ describe 'Class secc_nrpe_checks' do
 
     describe user('nrpe') do
       it { should exist }
-      it { should have_home_directory '/home/nrpe' }
+      it { should have_home_directory '/opt/monitoring' }
       it { should have_login_shell '/sbin/nologin' }
     end
 
-    describe file('/home/nrpe/') do
+    describe file('/opt/monitoring') do
       it { should exist }
       it { should be_directory }
       it { should be_mode 755 }
@@ -41,7 +47,7 @@ describe 'Class secc_nrpe_checks' do
       it { should be_grouped_into 'nrpe'}
     end
 
-    describe file('/home/nrpe/bin/') do
+    describe file('/opt/monitoring/bin/') do
       it { should exist }
       it { should be_directory }
       it { should be_mode 750 }
@@ -66,8 +72,7 @@ describe 'Class secc_nrpe_checks' do
 
     basic_nagios_plugins.each do |plugin|
       describe package(plugin) do
-        it { should be_installed }
+        it { should_not be_installed }
       end
     end
-
 end
