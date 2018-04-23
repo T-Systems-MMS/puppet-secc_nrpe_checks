@@ -13,6 +13,9 @@ describe 'Class secc_nrpe_checks custom settings' do
     	'nagios-plugins-tcp',
     ]
 
+    # stop NRPE because other tests make changes to the user
+    command("service nrpe stop")
+
     let(:manifest) {
     <<-EOS
       class { 'secc_nrpe':
