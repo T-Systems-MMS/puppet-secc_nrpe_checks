@@ -1,5 +1,8 @@
 # AMCS SecC - NRPE Checks Module
 
+[![Build Status](https://travis-ci.org/T-Systems-MMS/puppet-secc_nrpe_checks.svg?branch=master)](https://travis-ci.org/T-Systems-MMS/puppet-secc_nrpe_checks)
+
+
 1. [Overview](#overview)
 2. [Module Description - What the module does and why it is useful](#module-description)
 3. [Setup - The basics of getting started with [nrpe]](#setup)
@@ -94,7 +97,3 @@ command[NRPE_first_command]=/bin/true
 ## Development
 
 * Änderungen am Modul sollten auch im Serverspec amcs_secc_nrpe_checks_spec.rb nachgezogen werden.
-
-## Release Notes/Contributors/Etc
-
-* Initialrelease.
