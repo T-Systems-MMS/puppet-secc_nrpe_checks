@@ -54,7 +54,7 @@ Es gibt zwei Verwendungsarten dieses Moduls:
 Beispiel:
 
 ```
-secc_nrpe_checks::nrpe_module_repository: https://$USERNAME:$PASSWORD@git.t-systems-mms.eu/scm/amcs700103/amcs_7001_03_nrpe_checks.git
+secc_nrpe_checks::nrpe_module_repository: https://$USERNAME:$PASSWORD@yourgitserver.example.com/scm/yourproject/your_nrpe_checks.git
 secc_nrpe_checks::manage_home_nrpe_bin_purge: false
 secc_nrpe_checks::manage_home_nrpe_bin_force: false
 ```
