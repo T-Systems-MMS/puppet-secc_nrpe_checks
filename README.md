@@ -16,7 +16,7 @@
 
 ## Overview
 
-This module is a daughter module for `secc_nrpe`
+This module is a companion module for `secc_nrpe`
 
 ## Module Description
 
